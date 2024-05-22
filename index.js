@@ -16,11 +16,10 @@ bot.on("callback_query", function(query){
     if(query.game_short_name != gameName){
         bot.answerCallbackQuery(query.id, "Sorry, '"+query.game_short_name+"' is not available.");    
     }else{
-        queries[query.id] = query;
-        let gameurl = "https://heredis12.github.io/infinitecrusade/";
-        bot.answerInlineQuery({
-            inline_message_id: query.id,
-            url: gameurl
+        bot.gameQuery((ctx) => {
+            let queryId = ctx.callbackQuery.id
+            let gameurl = "https://heredis12.github.io/infinitecrusade/"+queryId;
+            ctx.answerGameQuery(gameUrl)
         })
     }
 });
