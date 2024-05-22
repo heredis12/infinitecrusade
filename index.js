@@ -18,10 +18,10 @@ bot.on("callback_query", function(query){
     }else{
         queries[query.id] = query;
         let gameurl = "https://heredis12.github.io/infinitecrusade/";
-        bot.answerCallbackQuery({
-            callback_query_id:query.id,
+        bot.answerInlineQuery({
+            inline_message_id: query.id,
             url: gameurl
-        });
+        })
     }
 });
 bot.on("inline_query", function(iq){
